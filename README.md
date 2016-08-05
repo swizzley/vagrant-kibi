@@ -4,6 +4,7 @@ Vagrant File for Kibi
 ## Overview
 
 I an image I uploaded. That image was forked from the official puppet-centos7.1 which I think is just a minimum install.
+
 __I modified the image in the following ways:__
   * Replaced puppet 4 with puppet 3.8
   * Installed git-1.8.3.1-6
