@@ -37,10 +37,10 @@ else
 fi
 
 if [ ! -f "/tmp/$KIBI" ]; then
-	sudo curl -skL -o /tmp/$KIBI http://$SRC/$KIBI
+	sudo curl -kL -o /tmp/$KIBI http://$SRC/$KIBI
 fi
 
-if [ ! "$(which node)" ]; then
+if [ ! "$(which node &> /dev/null)" ]; then
     sudo yum makecache fast &> /dev/null
     if [ ! "$(yum repolist all|grep -i epel)" ]; then
         sudo echo "[epel]" > /etc/yum.repos.d/epel.repo
@@ -51,11 +51,11 @@ if [ ! "$(which node)" ]; then
     sudo yum -y install nodejs
 fi
 
-if [ ! "$(which java)" ] || [ ! "$(readlink -f $(which java)|grep -q 1.8)" ]; then
+if [ ! "$(which java &> /dev/null)" ] || [ ! "$(readlink -f $(which java)|grep -q 1.8)" ]; then
     sudo yum -y install java-1.8.0-openjdk
 fi
 
-if [ ! "$(which unzip)" ]; then
+if [ ! "$(which unzip &> /dev/null)" ]; then
     sudo yum -y install unzip
 fi
 
